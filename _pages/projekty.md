@@ -7,22 +7,46 @@ nav: true
 nav_order: 2
 ---
 
-Dysponujemy dronami platformowymi o modułowej budowie, dronami wyścigowymi FPV, dronami rojowymi i jednostkami szkoleniowymi, komputerami pokładowymi (Raspberry Pi 5, NVIDIA Jetson Orin Nano), drukarką 3D, klatką z systemem motion capture oraz autonomicznym pojazdem czterokołowym. **Masz własny pomysł?** [Napisz do nas](mailto:avader@student.agh.edu.pl) – pomożemy go zrealizować.
+Dysponujemy dronami platformowymi o modułowej budowie, dronami wyścigowymi FPV, dronami rojowymi i jednostkami szkoleniowymi, komputerami pokładowymi (Raspberry Pi 5, NVIDIA Jetson Orin Nano), drukarką 3D, klatką z systemem motion capture oraz autonomicznym pojazdem czterokołowym.
 
-<h2 class="page-section-title">W trakcie realizacji</h2>
-<div class="row row-cols-1 row-cols-md-2">
-  {% for p in site.data.grants.current %}
-  <div class="col mb-4">
-    <div class="card h-100 avader-project-card">
-      <div class="card-body">
-        <h3 class="card-title">{{ p.title }}</h3>
-        <p>{{ p.text }}</p>
-        {% if p.funding %}<p class="avader-funding">{{ p.funding }}</p>{% endif %}
-      </div>
-    </div>
-  </div>
+<div class="avader-gallery">
+  {% for img in site.data.grants.equipment %}
+    <figure>
+      <img src="{{ img.file | prepend: '/assets/img/projects/' | relative_url }}" alt="{{ img.alt }}" loading="lazy">
+      <figcaption>{{ img.alt }}</figcaption>
+    </figure>
   {% endfor %}
 </div>
+
+**Wszystko zaczyna się od dobrego pomysłu!** Masz własną wizję i szukasz miejsca, by wcielić ją w życie, a może chcesz dołączyć do któregoś z istniejących projektów? [Napisz do nas](mailto:avader@student.agh.edu.pl) – zapraszamy do Koła Naukowego AVADER.
+
+<h2 class="page-section-title">W trakcie realizacji</h2>
+{% for p in site.data.grants.current %}
+<div class="card mb-4 avader-project-card">
+  <div class="card-body">
+    <h3 class="card-title">{{ p.title }}</h3>
+    {% if p.subtitle %}<p class="avader-project-subtitle">{{ p.subtitle }}</p>{% endif %}
+    <p>{{ p.text }}</p>
+    {% if p.images %}
+    <div class="avader-gallery">
+      {% for img in p.images %}<figure><img src="{{ img | prepend: '/assets/img/projects/' | relative_url }}" alt="{{ p.title }}" loading="lazy"></figure>{% endfor %}
+    </div>
+    {% endif %}
+    {% if p.funding %}
+    <div class="avader-funding">
+      <h4>Finansowanie projektu</h4>
+      <p>{{ p.funding }}</p>
+      {% if p.funding_logos %}
+      <div class="avader-funding-logos">
+        {% for logo in p.funding_logos %}<img src="{{ logo | prepend: '/assets/img/projects/' | relative_url }}" alt="" loading="lazy">{% endfor %}
+      </div>
+      {% endif %}
+      {% if p.banner %}<img class="avader-funding-banner" src="{{ p.banner | prepend: '/assets/img/projects/' | relative_url }}" alt="Dofinansowano ze środków budżetu państwa – {{ p.title }}" loading="lazy">{% endif %}
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endfor %}
 
 {% assign grant_count = 0 %}{% for e in site.data.grants.rector %}{% assign grant_count = grant_count | plus: e.projects.size %}{% endfor %}
 
