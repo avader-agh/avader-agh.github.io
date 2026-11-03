@@ -1,0 +1,142 @@
+---
+layout: default
+---
+{% comment %}
+  Home page of AGH AVADER (Polish: _pages/about.md, English: _pages/en.md).
+  All texts come from the page front matter (`t` = labels), lists from _data/ (achievements, grants, people, partners).
+{% endcomment %}
+{% assign t = page.labels %}
+{% assign people = site.data.people %}
+{% assign grant_count = 0 %}
+{% for edition in site.data.grants.rector %}
+  {% assign grant_count = grant_count | plus: edition.projects.size %}
+{% endfor %}
+
+<div class="post home avader-home">
+  <section class="home-hero avader-hero">
+    <div class="home-hero-text">
+      <img class="avader-hero-logo" src="{{ '/assets/img/avader_logo.png' | relative_url }}" alt="AGH AVADER">
+      <h1 class="home-title">{{ page.hero_title }}</h1>
+      <div class="home-lead">{{ page.hero_lead | markdownify }}</div>
+      <div class="home-buttons">
+        {% for button in page.hero_buttons %}
+          <a
+            class="home-btn{% if forloop.first %} home-btn-primary{% endif %}"
+            href="{% if button.url contains '#' or button.url contains '://' %}{{ button.url }}{% else %}{{ button.url | relative_url }}{% endif %}"
+          >
+            {{- button.label -}}
+          </a>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section class="home-stats">
+    <div>
+      <b>2014</b>
+      <span>{{ t.since }}</span>
+    </div>
+    <div>
+      <b>{{ people.members.size }}</b>
+      <span>{{ t.members }}</span>
+    </div>
+    <div>
+      <b>{{ site.data.achievements.size }}</b>
+      <span>{{ t.achievements }}</span>
+    </div>
+    <div>
+      <b>{{ grant_count }}</b>
+      <span>{{ t.grants }}</span>
+    </div>
+  </section>
+
+  <section class="home-section" id="sections">
+    <h2 class="home-section-title">{{ t.sections_title }}</h2>
+    <div class="home-areas">
+      {% for area in page.sections %}
+        <div class="home-area">
+          <span class="home-area-icon"><i class="{{ area.icon }}"></i></span>
+          <h3>{{ area.title }}</h3>
+          <p>{{ area.text }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="home-section home-about" id="about">
+    <h2 class="home-section-title">{{ t.about_title }}</h2>
+    <div class="home-about-text">{{ content }}</div>
+  </section>
+
+  <section class="home-section" id="achievements">
+    <h2 class="home-section-title">
+      <a href="{{ '/osiagniecia/' | relative_url }}">{{ t.achievements_title }}</a>
+    </h2>
+    <ul class="avader-highlights">
+      {% assign highlights = site.data.achievements | where: 'highlight', true %}
+      {% for a in highlights %}
+        <li>
+          <i class="fa-solid fa-trophy"></i>
+          <span class="avader-highlight-year">{{ a.year }}</span>
+          {% if page.lang == 'en' and a.title_en %}
+            {{ a.title_en }}
+          {% else %}
+            <strong>{{ a.place }}</strong> – {{ a.competition }}
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+    <p class="avader-more">
+      <a href="{{ '/osiagniecia/' | relative_url }}">{{ t.all_achievements }} &rarr;</a>
+    </p>
+  </section>
+
+  <section class="home-section" id="partners">
+    <h2 class="home-section-title">{{ t.partners_title }}</h2>
+    <div class="avader-partners">
+      {% for partner in site.data.partners %}
+        <a href="{{ partner.url }}" target="_blank" rel="noopener" title="{{ partner.name }}">
+          <img src="{{ partner.logo | prepend: '/assets/img/partners/' | relative_url }}" alt="{{ partner.name }}" loading="lazy">
+        </a>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="home-section" id="contact">
+    <h2 class="home-section-title">{{ t.contact_title }}</h2>
+    <div class="avader-contact">
+      <div>
+        <h3>{{ t.supervisors }}</h3>
+        <ul>
+          {% for s in people.supervisors %}
+            <li>
+              <a href="{{ s.url }}" target="_blank" rel="noopener">{{ s.name }}</a> ·
+              <a href="mailto:{{ s.email }}">{{ s.email }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div>
+        <h3>{{ t.contact }}</h3>
+        <ul>
+          <li>
+            <i class="fa-solid fa-envelope"></i>
+            <a href="mailto:avader@student.agh.edu.pl">avader@student.agh.edu.pl</a>
+          </li>
+          <li><i class="fa-solid fa-location-dot"></i> {{ t.place }}</li>
+          <li>
+            <a href="https://www.facebook.com/avader.agh" target="_blank" rel="noopener"><i class="fa-brands fa-facebook"></i> Facebook</a> ·
+            <a href="https://www.linkedin.com/company/avader-agh/" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i> LinkedIn</a> ·
+            <a href="https://www.youtube.com/channel/UCDHDghepJrBHilNI4EZ4w0Q" target="_blank" rel="noopener"
+              ><i class="fa-brands fa-youtube"></i> YouTube</a
+            >
+            ·
+            <a href="https://github.com/avader-agh" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  {% include cta_banner.liquid title=t.join_title text=t.join_text button=t.join_button url='mailto:avader@student.agh.edu.pl' logo='assets/img/agh_avader_logo_sq_small.png' %}
+</div>

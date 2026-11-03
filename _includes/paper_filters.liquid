@@ -1,0 +1,72 @@
+<div class="list-filters list-filters-inline paper-filters">
+  <div class="list-filter-search">
+    <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+    <input type="search" id="paper-search" placeholder="Search title, author, venue or abstract…" aria-label="Search papers" autocomplete="off">
+  </div>
+  <div class="list-filter-group" data-filter="year">
+    <span class="list-filter-label"><i class="fa-regular fa-calendar"></i> Year</span>
+    <select class="list-filter-select" aria-label="Filter by year">
+      <option value="">All years</option>
+    </select>
+  </div>
+  <div class="list-filter-group" data-filter="type">
+    <span class="list-filter-label"><i class="fa-solid fa-book-open"></i> Type</span>
+    <div class="list-filter-chips">
+      <button type="button" class="filter-chip active" data-value="">All</button>
+      {% comment %} include.query (optional, e.g. a member's 'author^=*Wasala') limits the chips to that person's papers. Chips rendered here (not by JS) so the filter bar does not change width and push the page after load {% endcomment %}
+      {% capture n_journal %}{% if include.query %}{% bibliography_count --query @article[{{include.query}}]* %}{% else %}{% bibliography_count --query @article %}{% endif %}{% endcapture %}
+      {% capture n_conference %}{% if include.query %}{% bibliography_count --query @inproceedings[{{include.query}}]* %}{% else %}{% bibliography_count --query @inproceedings %}{% endif %}{% endcapture %}
+      {% capture n_chapter %}{% if include.query %}{% bibliography_count --query @inbook[{{include.query}}]* %}{% else %}{% bibliography_count --query @inbook %}{% endif %}{% endcapture %}
+      {% capture n_book %}{% if include.query %}{% bibliography_count --query @book[{{include.query}}]* %}{% else %}{% bibliography_count --query @book %}{% endif %}{% endcapture %}
+      {% if n_journal != '0' -%}
+        <button type="button" class="filter-chip" data-value="Journal">Journal</button>
+      {%- endif %}
+      {% if n_conference != '0' -%}
+        <button type="button" class="filter-chip" data-value="Conference">Conference</button>
+      {%- endif %}
+      {% if n_chapter != '0' -%}
+        <button type="button" class="filter-chip" data-value="Book chapter">Book chapter</button>
+      {%- endif %}
+      {% if n_book != '0' -%}
+        <button type="button" class="filter-chip" data-value="Book">Book</button>
+      {%- endif %}
+    </div>
+  </div>
+  <div class="list-filter-group" data-filter="project">
+    <span class="list-filter-label"><i class="fa-solid fa-diagram-project"></i> Project</span>
+    <select class="list-filter-select" aria-label="Filter by project">
+      <option value="">All projects</option>
+      {% for pair in site.data.projects %}
+        {% if pair[0] != 'NCN' %}
+          {% assign project_label = pair[1][0].label | default: pair[0] %}
+          {% assign project_page = site.projects | where: 'url', pair[1][0].url | first %}
+          <option value="{{ pair[0] }}">
+            {{ project_label -}}
+            {%- if project_page.principal_investigator %} – {{ project_page.principal_investigator | split: ',' | first }}{% endif %}
+          </option>
+        {% endif %}
+      {% endfor %}
+    </select>
+  </div>
+  <button type="button" class="featured-toggle" aria-pressed="false"><i class="fa-solid fa-star"></i> Featured only</button>
+  {% assign partners_with_id = site.data.collaboration | where_exp: 'p', 'p.id' %}
+  <p
+    id="paper-filter-partner"
+    class="list-filter-partner"
+    hidden
+    {% for p in partners_with_id %}
+      data-name{{ p.id }}="{{ p.institution | default: p.name }}"
+    {% endfor %}
+  >
+    <i class="fa-solid fa-handshake"></i> Joint papers with <span></span>
+  </p>
+  <div class="list-filter-footer">
+    <span
+      ><span id="paper-filter-count"></span> ·
+      <button type="button" id="paper-bibtex-download" class="list-filter-reset"><i class="fa-solid fa-download"></i> Download BibTeX</button></span
+    >
+    <button type="button" id="paper-filter-reset" class="list-filter-reset" hidden><i class="fa-solid fa-xmark"></i> Clear filters</button>
+  </div>
+</div>
+<p id="paper-filter-empty" class="list-filter-empty" hidden>No papers match the search or the selected filters.</p>
+<script defer src="{{ '/assets/js/paper-filters.js' | relative_url }}"></script>

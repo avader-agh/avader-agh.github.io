@@ -1,0 +1,288 @@
+/*******************************************************************************
+ * Themes
+ ******************************************************************************/
+
+@use "sass:color";
+
+:root {
+  color-scheme: light;
+  --global-bg-color: #{$white-color};
+  --global-code-bg-color: #{$code-bg-color-light};
+  --global-text-color: #{$black-color};
+  // darker than $grey-color so secondary text passes WCAG AA (4.5:1) on white
+  --global-text-color-light: #6b6b6b;
+  // --global-theme-color: #{$purple-color};
+  // --global-hover-color: #{$purple-color};
+  --global-theme-color: #1a6b2f; // AGH AVADER green
+  --global-hover-color: #1a6b2f;
+  --global-hover-text-color: #{$white-color};
+  // background behind white logos / text headers on the Conferences page
+  --global-logo-dark-bg: #1a6b2f;
+  --global-footer-bg-color: #{$grey-color-dark};
+  --global-footer-text-color: #{$grey-color-light};
+  --global-footer-link-color: #{$white-color};
+  --global-distill-app-color: #{$grey-color};
+  --global-divider-color: rgba(0, 0, 0, 0.1);
+  --global-card-bg-color: #{$white-color};
+  --global-highlight-color: #{$red-color-dark};
+  --global-back-to-top-bg-color: rgba(
+    #{color.channel($black-color, "red", $space: rgb)},
+    #{color.channel($black-color, "green", $space: rgb)},
+    #{color.channel($black-color, "blue", $space: rgb)},
+    0.4
+  );
+  --global-back-to-top-text-color: #{$white-color};
+  --global-newsletter-bg-color: #{$white-color};
+  --global-newsletter-text-color: #{$black-color};
+
+  --global-tip-block: #42b983;
+  --global-tip-block-bg: #e2f5ec;
+  --global-tip-block-text: #215d42;
+  --global-tip-block-title: #359469;
+  --global-warning-block: #e7c000;
+  --global-warning-block-bg: #fff8d8;
+  --global-warning-block-text: #6b5900;
+  --global-warning-block-title: #b29400;
+  --global-danger-block: #c00;
+  --global-danger-block-bg: #ffe0e0;
+  --global-danger-block-text: #600;
+  --global-danger-block-title: #c00;
+
+  --global-badge-bg-color: #00693c;
+  --global-badge-project-bg-color: #a71930;
+  --global-badge-text-color: #{$white-color};
+  --global-status-ongoing-color: #237a46;
+
+  --color-gray-50: #f9fafb;
+  --color-gray-100: #f3f4f6;
+  --color-gray-200: #e5e7eb;
+  --color-gray-300: #d1d5db;
+  --color-gray-400: #9ca3af;
+  --color-gray-500: #6b7280;
+  --color-gray-600: #4b5563;
+  --color-gray-700: #374151;
+  --color-gray-800: #1f2937;
+  --color-gray-900: #111827;
+
+  --spacing: 0.25rem;
+
+  --text-xs: 0.75rem;
+  --text-xs--line-height: calc(1 / 0.75);
+  --text-sm: 0.875rem;
+  --text-sm--line-height: calc(1.25 / 0.875);
+  --text-base: 1rem;
+  --text-base--line-height: calc(1.5 / 1);
+  --text-lg: 1.125rem;
+  --text-lg--line-height: calc(1.75 / 1.125);
+  --text-xl: 1.25rem;
+  --text-xl--line-height: calc(1.75 / 1.25);
+  --text-2xl: 1.5rem;
+  --text-2xl--line-height: calc(2 / 1.5);
+  --text-3xl: 1.875rem;
+  --text-3xl--line-height: calc(2.25 / 1.875);
+  --text-4xl: 2.25rem;
+  --text-4xl--line-height: calc(2.5 / 2.25);
+  --text-5xl: 3rem;
+  --text-5xl--line-height: 1;
+  --text-6xl: 3.75rem;
+  --text-6xl--line-height: 1;
+  --text-7xl: 4.5rem;
+  --text-7xl--line-height: 1;
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-black: 900;
+
+  #light-toggle-system {
+    padding-left: 10px;
+    padding-top: 12px;
+    display: block;
+  }
+
+  #light-toggle-dark {
+    display: none;
+  }
+
+  #light-toggle-light {
+    display: none;
+  }
+
+  .only-light {
+    display: block;
+  }
+
+  .only-dark {
+    display: none;
+  }
+
+  #back-to-top {
+    color: var(--global-back-to-top-text-color);
+    background: var(--global-back-to-top-bg-color);
+    bottom: $back-to-top-bottom;
+    right: $back-to-top-right;
+    height: $back-to-top-height;
+    width: $back-to-top-width;
+    z-index: $back-to-top-z-index;
+  }
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --global-bg-color: #{$grey-color-dark};
+  --global-code-bg-color: #{$code-bg-color-dark};
+  --global-text-color: #{$grey-color-light};
+  --global-text-color-light: #a3a3a3;
+  // --global-theme-color: #{$cyan-color};
+  // --global-hover-color: #{$cyan-color};
+  // lighter than the former #41708b so links and headings pass WCAG AA on the dark background;
+  // text on theme-coloured backgrounds (active chips, hovered buttons) is therefore dark
+  --global-theme-color: #4caf6a; // AGH AVADER green (dark mode)
+  --global-hover-color: #4caf6a;
+  --global-hover-text-color: #{$grey-color-dark};
+  --global-logo-dark-bg: #2b4c5f;
+  // dark footer (slightly darker than the page) instead of the inverted light grey bar
+  --global-footer-bg-color: #111112;
+  --global-footer-text-color: #a3a3a3;
+  --global-footer-link-color: #{$white-color};
+  --global-distill-app-color: #{$grey-color-light};
+  --global-divider-color: #424246;
+  --global-card-bg-color: #{$grey-900};
+  --global-back-to-top-bg-color: rgba(
+    #{color.channel($white-color, "red", $space: rgb)},
+    #{color.channel($white-color, "green", $space: rgb)},
+    #{color.channel($white-color, "blue", $space: rgb)},
+    0.5
+  );
+  --global-back-to-top-text-color: #{$black-color};
+  --global-newsletter-bg-color: #{$grey-color-light};
+  --global-newsletter-text-color: #{$grey-color-dark};
+
+  --global-tip-block: #42b983;
+  --global-tip-block-bg: #215d42;
+  --global-tip-block-text: #beffe2;
+  --global-tip-block-title: #e2f5ec;
+  --global-warning-block: #e7c000;
+  --global-warning-block-bg: #6b5900;
+  --global-warning-block-text: #fff2af;
+  --global-warning-block-title: #fff8d8;
+  --global-danger-block: #c00;
+  --global-danger-block-bg: #600;
+  --global-danger-block-text: #ffb9b9;
+  --global-danger-block-title: #ffe0e0;
+
+  .only-light {
+    display: none;
+  }
+
+  .only-dark {
+    display: block;
+  }
+}
+
+html[data-theme-setting="dark"] {
+  #light-toggle-system {
+    display: none;
+  }
+
+  #light-toggle-dark {
+    padding-left: 10px;
+    padding-top: 12px;
+    display: block;
+  }
+
+  #light-toggle-light {
+    display: none;
+  }
+
+  #back-to-top {
+    color: var(--global-back-to-top-text-color);
+    background: var(--global-back-to-top-bg-color);
+  }
+}
+
+html[data-theme-setting="light"] {
+  #light-toggle-system {
+    display: none;
+  }
+
+  #light-toggle-dark {
+    display: none;
+  }
+
+  #light-toggle-light {
+    padding-left: 10px;
+    padding-top: 12px;
+    display: block;
+  }
+}
+
+html[data-theme="light"] {
+  .more-info-keywords span {
+    background-color: var(--color-gray-200);
+    color: var(--color-gray-700);
+  }
+
+  .text-gray-200 {
+    color: var(--color-gray-200);
+  }
+
+  .text-gray-400 {
+    color: var(--color-gray-400);
+  }
+
+  .text-gray-500 {
+    color: var(--color-gray-500);
+  }
+
+  .text-gray-600 {
+    color: var(--color-gray-600);
+  }
+
+  .text-gray-700 {
+    color: var(--color-gray-700);
+  }
+
+  .text-gray-800 {
+    color: var(--color-gray-800);
+  }
+
+  .text-gray-900 {
+    color: var(--color-gray-900);
+  }
+}
+
+html[data-theme="dark"] {
+  .more-info-keywords span {
+    background-color: var(--color-gray-700);
+    color: var(--color-gray-300);
+  }
+
+  .text-gray-100 {
+    color: var(--color-gray-100);
+  }
+
+  .text-gray-200 {
+    color: var(--color-gray-200);
+  }
+
+  .text-gray-500 {
+    color: var(--color-gray-300);
+  }
+
+  .text-gray-400 {
+    color: var(--color-gray-400);
+  }
+
+  .text-gray-700 {
+    color: var(--color-gray-700);
+  }
+}
+
+@media (min-width: 768px) {
+  .col-md-2 {
+    flex: 0 0 19% !important;
+    max-width: 19% !important;
+  }
+}

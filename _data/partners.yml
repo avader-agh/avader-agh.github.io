@@ -1,0 +1,20 @@
+# Partnerzy i jednostki (pasek logotypów na stronie głównej). logo – plik w assets/img/partners/
+- name: AGH University of Krakow
+  url: https://www.agh.edu.pl
+  logo: logo_AGH.png
+- name: Wydział Elektrotechniki, Automatyki, Informatyki i Inżynierii Biomedycznej
+  url: https://www.eaiib.agh.edu.pl
+  logo: Wydzial_kolor.png
+# TODO: sprawdzić nazwę i link – logo „AiIB” ze starej strony
+- name: AiIB
+  url: https://www.eaiib.agh.edu.pl
+  logo: AiIB_kolor.jpg
+- name: Embedded Perception and Autonomous Systems Group
+  url: https://vision-agh.github.io
+  logo: epas.png
+- name: AISLER
+  url: https://aisler.net
+  logo: AISLER.svg
+- name: Botland
+  url: https://botland.com.pl
+  logo: logo_botland_kn.png

@@ -1,0 +1,61 @@
+# Członkowie koła (strona /czlonkowie/).
+# board – zarząd (bieżąca kadencja), supervisors – opiekunowie, members – lista członków
+
+board_term: 2025/2026
+board:
+  - name: Remigiusz Mietła
+    role: Prezes
+    email: mietla@student.agh.edu.pl
+  - name: Kamil Jędrzejko
+    role: Członek Zarządu
+    email: kjedrzejko@student.agh.edu.pl
+  - name: Paweł Jerzyna
+    role: Członek Zarządu
+    email: jerzyna@student.agh.edu.pl
+
+supervisors:
+  - name: dr hab. inż. Tomasz Kryjak
+    email: kryjak@agh.edu.pl
+    url: https://vision-agh.github.io/members/kryjak
+  - name: mgr inż. Hubert Szolc
+    email: szolc@agh.edu.pl
+    url: https://vision-agh.github.io/members/szolc
+  - name: mgr inż. Mateusz Wąsala
+    email: wasala@agh.edu.pl
+    url: https://vision-agh.github.io/members/wasala
+
+members:
+  - Remigiusz Mietła
+  - Kamil Jędrzejko
+  - Paweł Jerzyna
+  - Jakub Cholewa
+  - Krzysztof Jagiełło
+  - Krzysztof Jura
+  - Mateusz Gołąbek
+  - Piotr Gajewski
+  - Jan Jagodziński
+  - Patryk Kamiński
+  - Hubert Gąska
+  - Jan Grabowski
+  - Dawid Podsiadło
+  - Julia Wiktorowicz
+  - Wiktor Matykiewicz
+  - Mateusz Hejmo
+  - Kacper Salamon
+  - Dominik Babiarczyk
+  - Michał Filipkowski
+  - Eryk Sobczyk
+  - Jan Krążyński
+  - Paweł Franczak
+  - Szczepan Rzeszutko
+  - Rafał Mielczarek
+  - Maciej Stadler
+  - Anastasiya Pytleva
+  - Norbert Siczek
+  - Natalia Kuchta
+  - Michał Kępka
+  - Michał Kaczmarek
+  - Paweł Kocur
+  - Wojciech Czyżowski
+  - Ludwik Fonfara
+  - Agnieszka Mietła

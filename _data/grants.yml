@@ -1,0 +1,50 @@
+# Projekty (strona /projekty/).
+# current – projekty w trakcie realizacji; rector – Granty Rektora AGH wg edycji (najnowsze na górze)
+
+current:
+  - title: ICUAS UAV Competition
+    text: >-
+      Projekt realizowany z myślą o corocznych zawodach odbywających się w ramach międzynarodowej konferencji ICUAS.
+      Rozwijamy w nim autonomiczny system zarządzania i pozycjonowania roju BSP, przeznaczony do misji poszukiwawczych
+      w środowisku miejskim.
+  - title: SKNTI AEROSENSE
+    text: >-
+      W ramach grantu Ministra Nauki i Szkolnictwa Wyższego („Studenckie koła naukowe tworzą innowacje”) projektujemy
+      i programujemy drona do zaawansowanych badań środowiska. Częścią projektu jest start w zawodach Droniada –
+      konstruujemy system do samodzielnego poboru i badania parametrów wody metodą in-situ.
+    funding: Projekt finansowany ze środków budżetu państwa, przyznanych przez Ministra Nauki i Szkolnictwa Wyższego w ramach Programu „Studenckie koła naukowe tworzą innowacje”.
+
+rector:
+  - year: 2026
+    projects:
+      - Automatyczne rozpoznawanie i transport ładunków do statycznego lub mobilnego celu
+  - year: 2025
+    projects:
+      - Automatyczne rozpoznawanie i transport ładunków oraz inspekcja z wykorzystaniem drona
+      - Uczenie przez wzmacnianie i modele PINN w sterowaniu robotami mobilnymi
+  - year: 2024
+    projects:
+      - Zliczanie obiektów z wykorzystaniem autonomicznego drona
+      - Zwiększanie autonomii dronów SKN AVADER
+  - year: 2023
+    projects:
+      - Zewnętrzna arena testowa dla dronów autonomicznych SKN AVADER
+      - Rój dronów autonomicznych SKN AVADER
+  - year: 2022
+    projects:
+      - FPT 2022 FPGA Design Competition – budowa i oprogramowanie modeli pojazdów autonomicznych
+      - Sterowanie dronem w czasie rzeczywistym poprzez zewnętrzne wizyjne sprzężenie zwrotne
+      - "Dron bez GPS: autonomiczna nawigacja na podstawie wizyjnego sprzężenia zwrotnego"
+  - year: 2021
+    projects:
+      - Autonomiczny dron wyścigowy
+      - Model pojazdu autonomicznego wykonujący manewry wymijania i wyprzedzania
+  - year: 2020
+    projects:
+      - Doposażenie dronów w systemy FPV, czujnik jakości powietrza oraz dodatkowe baterie
+  - year: 2019
+    projects:
+      - Współpraca autonomicznych bezzałogowych pojazdów latających
+  - year: 2018
+    projects:
+      - Rozszerzenie funkcjonalności pojazdu autonomicznego poprzez współpracę z bezzałogowym pojazdem latającym

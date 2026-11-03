@@ -1,0 +1,165 @@
+<li
+  class="thesis-item"
+  data-year="{{ thesis.year }}"
+  data-type="{{ thesis.type }}"
+  data-funding="{{ thesis.funding }}"
+  data-avader="{% if thesis.avader %}yes{% endif %}"
+  data-supervisor="{{ thesis.supervisor }}"
+>
+  <div class="row">
+    <!-- Left column: thesis type badge and preview image -->
+    <div class="col-sm-2 abbr paper-badges">
+      {% if thesis.type %}
+        <abbr class="badge rounded paper-venue thesis-type-badge">{{ thesis.type }}</abbr>
+      {% endif %}
+    </div>
+
+    {% if thesis.image %}
+      <!-- Preview image between the type badge and the text -->
+      <div class="col-sm-2 paper-preview">
+        {% assign thesis_img = thesis.image | prepend: '/assets/img/theses/' %}
+        {%
+          include figure.liquid
+          loading="eager"
+          path=thesis_img
+          sizes="200px"
+          class="preview z-depth-1 rounded"
+          zoomable=true
+          avoid_scaling=true
+          alt=thesis.title
+        %}
+      </div>
+    {% endif %}
+
+    <div class="col-sm-10 paper-content">
+      <div class="title">{{ thesis.title }}</div>
+      {% assign author_first = thesis.author | split: ' ' | first %}
+      {% assign author_last = thesis.author | split: ' ' | last | remove_accents %}
+      {% assign author_url = null %}
+      {% for coauthor in site.data.coauthors[author_last] %}
+        {% if coauthor.firstname contains author_first %}
+          {% assign author_url = coauthor.url %}
+          {% break %}
+        {% endif %}
+      {% endfor %}
+      <div class="author">
+        Author:
+        {% if author_url -%}
+          <a href="{{ author_url | relative_url }}">{{ thesis.author }}</a>
+        {%- else -%}
+          {{ thesis.author }}
+        {%- endif %}
+        {% if thesis.linkedin %}
+          {% if thesis.linkedin contains '://' %}
+            {% assign linkedin_url = thesis.linkedin %}
+          {% else %}
+            {% assign linkedin_url = thesis.linkedin | prepend: 'https://www.linkedin.com/in/' %}
+          {% endif %}
+          <a href="{{ linkedin_url }}" target="_blank" rel="noopener" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        {% endif %}
+      </div>
+      {% assign supervisor_url = thesis.supervisor_url %}
+      {% if thesis.supervisor and supervisor_url == null %}
+        {% assign supervisor_last = thesis.supervisor | split: ',' | first | split: ' ' | last | remove_accents %}
+        {% assign supervisor_url = site.data.coauthors[supervisor_last] | map: 'url' | first %}
+      {% endif %}
+      {% if thesis.supervisor %}
+        <div class="periodical">
+          <em>
+            Supervisor:
+            {% if supervisor_url -%}
+              <a href="{{ supervisor_url | relative_url }}">{{ thesis.supervisor }}</a>
+            {%- else -%}
+              {{- thesis.supervisor -}}
+            {%- endif %}
+          </em>
+        </div>
+      {% endif %}
+      {% if thesis.year or thesis.defense_date %}
+        <div class="periodical">
+          <em>
+            {%- if thesis.year %}Academic year: {{ thesis.year }}{% endif -%}
+            {%- if thesis.defense_date -%}
+              {%- if thesis.year %} · {% endif -%}
+              Defended: {{ thesis.defense_date | date: '%-d %B %Y' }}
+            {%- endif -%}
+          </em>
+        </div>
+      {% endif %}
+      {% if thesis.cooperation %}
+        <div class="periodical">
+          <em>
+            Collaboration:
+            {% assign cooperators = thesis.cooperation | split: ', ' %}
+            {% for cooperator in cooperators %}
+              {% assign cooperator_last = cooperator | split: ' ' | last | remove_accents %}
+              {% assign cooperator_url = site.data.coauthors[cooperator_last] | map: 'url' | first %}
+              {%- if cooperator_url -%}
+                <a href="{{ cooperator_url | relative_url }}">{{ cooperator }}</a>
+              {%- else -%}
+                {{- cooperator -}}
+              {%- endif -%}
+              {%- unless forloop.last %}, {% endunless %}
+            {% endfor %}
+          </em>
+        </div>
+      {% endif %}
+
+      <div class="links">
+        {% if thesis.group != 'Alumni' and thesis.defense_date == null %}
+          <span class="thesis-status ongoing"><i class="fa-solid fa-hourglass-half"></i> Ongoing</span>
+        {% endif %}
+        {% if thesis.avader %}
+          <a
+            class="thesis-avader"
+            href="https://www.avader.agh.edu.pl/"
+            target="_blank"
+            rel="noopener"
+            title="Carried out with the AGH AVADER student research group"
+            ><img src="{{ '/assets/img/agh_avader_logo_sq_small.png' | relative_url }}" alt="" loading="lazy"> AGH AVADER</a
+          >
+        {% endif %}
+        {% if thesis.abstract %}
+          <a class="abstract btn btn-sm z-depth-0" role="button">Abstract</a>
+        {% endif %}
+        {% if thesis.pdf %}
+          <a href="{{ thesis.pdf }}" class="btn btn-sm z-depth-0" role="button">PDF</a>
+        {% endif %}
+        {% if thesis.code %}
+          <a href="{{ thesis.code }}" class="btn btn-sm z-depth-0" role="button">Code</a>
+        {% endif %}
+        {% if thesis.funding %}
+          {% assign funding_info = site.data.thesis_funding[thesis.funding] %}
+          <a class="award btn btn-sm z-depth-0" role="button">{{ funding_info.button | default: thesis.funding }}</a>
+        {% endif %}
+      </div>
+
+      {% if thesis.abstract %}
+        <div class="abstract hidden">
+          <p>{{ thesis.abstract }}</p>
+        </div>
+      {% endif %}
+      {% if thesis.funding %}
+        {% assign funding = site.data.thesis_funding[thesis.funding] %}
+        <div class="award hidden">
+          <p class="funding-info">
+            {% if funding %}
+              {% if funding.logo %}
+                <a href="{{ funding.url | default: '#' }}" target="_blank" rel="noopener" class="funding-logo">
+                  <img src="{{ funding.logo | relative_url }}" alt="{{ funding.name }}" loading="lazy">
+                </a>
+              {% endif %}
+              <strong>{{ funding.name }}</strong><br>
+              {{ funding.description }}
+              {% if funding.url %}
+                – <a href="{{ funding.url }}" target="_blank" rel="noopener">more information</a>
+              {% endif %}
+            {% else %}
+              Supported by {{ thesis.funding }}
+            {% endif %}
+          </p>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</li>

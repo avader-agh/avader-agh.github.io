@@ -1,0 +1,105 @@
+---
+layout: page
+
+---
+{% assign phd_students = site.members | where: 'group', 'PhD Students' %}
+{% capture team_stats -%}
+  {{ site.members.size }}|members;{{ phd_students.size }}|PhD students;{{ site.data.alumni.size }}|alumni
+{%- endcapture %}
+{% include page_stats.liquid items=team_stats %}
+
+{% if page.research_areas %}
+  <div class="list-filters list-filters-inline team-filters">
+    <div class="list-filter-group" data-filter="area">
+      <span class="list-filter-label"><i class="fa-solid fa-tags"></i> Research area</span>
+      <div class="list-filter-chips">
+        <button type="button" class="filter-chip active" data-value="">All</button>
+        {% for area in page.research_areas %}
+          <button type="button" class="filter-chip" data-value="{{ area.match | join: '|' | downcase }}">{{ area.name }}</button>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  <p id="team-filter-empty" class="list-filter-empty" hidden>Nobody matches the selected research area.</p>
+  <script defer src="{{ '/assets/js/team-filters.js' | relative_url }}"></script>
+{% endif %}
+
+{% for section in page.team_sections %}
+  {% assign section_members = site.members | where_exp: 'm', 'section.groups contains m.group' | sort: 'vis_order' %}
+  {% if section_members.size > 0 %}
+    <div class="team-section">
+      <h2 class="page-section-title has-count">
+        {{ section.title }}
+        <span class="section-count">
+          {{- section_members.size }}
+          {% if section_members.size == 1 %}person{% else %}people{% endif -%}
+        </span>
+      </h2>
+      <div class="row row-cols-1 row-cols-md-2{% unless section.leaders %} row-cols-lg-4{% endunless %}">
+        {% for member in section_members %}
+          {% include team_member_card.liquid leader=section.leaders %}
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
+{% endfor %}
+
+{% if site.data.alumni.size > 0 %}
+  <h2 class="page-section-title">Alumni</h2>
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 alumni-list">
+    {% for alumnus in site.data.alumni %}
+      <div class="col mb-3">
+        <div class="alumni-card h-100">
+          {% if alumnus.image %}
+            <img
+              class="alumni-photo"
+              src="{{ alumnus.image | prepend: '/assets/img/' | relative_url }}"
+              alt="{{ alumnus.name }}"
+              loading="lazy"
+            >
+          {% endif %}
+          <div class="alumni-info">
+            <div class="alumni-name">
+              {% if alumnus.url -%}
+                <a href="{{ alumnus.url }}" target="_blank" rel="noopener">{{ alumnus.name }}</a>
+              {%- else -%}
+                {{ alumnus.name }}
+              {%- endif %}
+              {% if alumnus.linkedin %}
+                {% if alumnus.linkedin contains '://' %}
+                  {% assign alumnus_linkedin = alumnus.linkedin %}
+                {% else %}
+                  {% assign alumnus_linkedin = alumnus.linkedin | prepend: 'https://www.linkedin.com/in/' %}
+                {% endif %}
+                <a href="{{ alumnus_linkedin }}" target="_blank" rel="noopener" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+              {% endif %}
+            </div>
+            {% if alumnus.role or alumnus.years %}
+              <div class="alumni-role">
+                {{- alumnus.role -}}
+                {%- if alumnus.role and alumnus.years %} · {% endif -%}
+                {{- alumnus.years -}}
+              </div>
+            {% endif %}
+            {% if alumnus.now %}
+              <div class="alumni-now"><i class="fa-solid fa-arrow-right"></i> {{ alumnus.now }}</div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}
+
+{% comment %}
+  "Want to join the team?" banner – temporarily disabled; remove the comment tags to restore.
+  {% assign head_member = site.members | where: 'team_head', true | first %}
+  {% assign contact_url = head_member.profile.email | prepend: 'mailto:' %}
+  {%
+    include cta_banner.liquid
+    title="Want to join the team?"
+    text="PhD positions, research projects and student theses in embedded vision, drones and autonomous systems."
+    button="Contact us"
+    url=contact_url
+  %}
+{% endcomment %}

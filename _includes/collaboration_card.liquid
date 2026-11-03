@@ -1,0 +1,69 @@
+<div
+  class="col mb-4 collab-item"
+  data-type="{{ partner.category }}"
+  data-country="{{ partner.country }}"
+  data-keywords="{{ partner.keywords | join: '|' }}"
+>
+  <div class="card h-100 collab-card">
+    {% if partner.logo %}
+      <div class="collab-logo{% if partner.logo_fit == 'contain' %} collab-logo-contain{% endif %}">
+        <img
+          src="{{ partner.logo | prepend: '/assets/img/collaboration/' | relative_url }}"
+          alt="{{ partner.institution | default: partner.name }} logo"
+          loading="lazy"
+        >
+      </div>
+    {% endif %}
+    <div class="card-body">
+      <h3 class="card-title">
+        {% if partner.url -%}
+          <a href="{{ partner.url }}" target="_blank" rel="noopener">
+            {{- partner.name }}
+            <i class="fas fa-external-link-alt collab-ext-icon"></i
+          ></a>
+        {%- else -%}
+          {{ partner.name }}
+        {%- endif %}
+      </h3>
+      {% if partner.institution %}
+        <div class="collab-institution">{{ partner.institution }}</div>
+      {% endif %}
+      {% if partner.country %}
+        <div class="collab-country"><i class="fa-solid fa-location-dot"></i> {{ partner.country }}</div>
+      {% endif %}
+      {% if partner.collaborators %}
+        <div class="collab-collaborators"><strong>Collaborators:</strong> {{ partner.collaborators }}</div>
+      {% endif %}
+      {% if partner.keywords %}
+        <div class="collab-keywords">
+          {% for kw in partner.keywords %}
+            <span>{{ kw }}</span>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+    <div class="collab-card-footer">
+      {% if partner.id %}
+        {% capture joint_papers %}{% bibliography_count --query @*[collaboration~={{ partner.id }}] %}{% endcapture %}
+        {% assign joint_papers = joint_papers | strip | plus: 0 %}
+        {% if joint_papers > 0 %}
+          <a class="collab-papers" href="{{ '/publications/' | relative_url }}?partner={{ partner.id }}"
+            ><i class="fa-solid fa-file-lines"></i> {{ joint_papers }} joint {% if joint_papers == 1 %}paper{% else %}papers{% endif -%}
+          </a>
+        {% else %}
+          <span class="collab-papers collab-papers-none"><i class="fa-regular fa-file-lines"></i> no joint papers yet</span>
+        {% endif %}
+      {% else %}
+        <span></span>
+      {% endif %}
+      {% if partner.description %}
+        <button type="button" class="collab-details-toggle" aria-expanded="false">Details &rarr;</button>
+      {% endif %}
+    </div>
+    {% if partner.description %}
+      <div class="collab-details" hidden>
+        <p>{{ partner.description }}</p>
+      </div>
+    {% endif %}
+  </div>
+</div>

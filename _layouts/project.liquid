@@ -1,0 +1,149 @@
+---
+layout: default
+---
+{% if page._styles %}
+  <!-- Page/Post style -->
+  <style type="text/css">
+    {
+        {
+        page._styles
+      }
+    }
+  </style>
+{% endif %}
+
+{% assign today = site.time | date: '%Y%m%d' %}
+{% assign project_end = page.end_date | date: '%Y%m%d' %}
+{% if page.end_date == null or project_end >= today %}
+  {% assign project_status = 'Ongoing' %}
+{% else %}
+  {% assign project_status = 'Completed' %}
+{% endif %}
+
+<div class="post project-page">
+  <header class="post-header">
+    <div class="project-page-badges">
+      {% if page.category -%}
+        <span class="project-funder">{{ page.category }}</span>
+      {%- endif %}
+      <span class="project-status project-status-{{ project_status | downcase }}">{{ project_status }}</span>
+    </div>
+    <h1 class="post-title">{{ page.title }}</h1>
+    {% if page.description %}
+      <p class="post-description">{{ page.description }}</p>
+    {% endif %}
+  </header>
+
+  <article>
+    <div class="project-page-head">
+      <div class="project-page-titles">
+        {% if page.title_en %}
+          <h2 class="project-page-title-en">
+            {% if page.acronym_en -%}
+              <span>{{ page.acronym_en }}:</span>
+            {% endif -%}
+            {{- page.title_en }}
+          </h2>
+        {% endif %}
+        {% if page.title_pl %}
+          <p class="project-page-title-pl">
+            {% if page.acronym_pl %}{{ page.acronym_pl }}: {% endif -%}
+            {{- page.title_pl }}
+          </p>
+        {% endif %}
+      </div>
+      {% if page.img %}
+        <div class="project-page-logo"><img src="{{ page.img | relative_url }}" alt="{{ page.title }} logo"></div>
+      {% endif %}
+    </div>
+
+    <ul class="project-page-meta">
+      {% if page.principal_investigator %}
+        {% assign pi_name = page.principal_investigator | split: ',' | first | remove: 'Prof ' %}
+        {% assign pi_member = site.members | where_exp: 'm', 'm.profile.name == pi_name' | first %}
+        <li>
+          <span class="project-page-meta-label"><i class="fa-solid fa-user"></i> Principal Investigator</span>
+          <span class="project-page-meta-value">
+            {%- if pi_member -%}
+              <a href="{{ pi_member.url | relative_url }}">{{ page.principal_investigator }}</a>
+            {%- else -%}
+              {{ page.principal_investigator }}
+            {%- endif -%}
+          </span>
+        </li>
+      {% endif %}
+      <li>
+        <span class="project-page-meta-label"><i class="fa-regular fa-calendar"></i> Duration</span>
+        <span class="project-page-meta-value">
+          {%- if page.duration -%}
+            {{ page.duration }}
+          {%- else -%}
+            {{ page.start_date | date: '%-d %b %Y' }} – {{ page.end_date | date: '%-d %b %Y' }}
+          {%- endif -%}
+        </span>
+      </li>
+      {% if page.budget %}
+        <li>
+          <span class="project-page-meta-label"><i class="fa-solid fa-coins"></i> Budget</span>
+          <span class="project-page-meta-value">{{ page.budget | number_with_delimiter: ' ' }} PLN</span>
+        </li>
+      {% endif %}
+      {% if page.project_number %}
+        <li>
+          <span class="project-page-meta-label"><i class="fa-solid fa-hashtag"></i> Project No.</span>
+          <span class="project-page-meta-value">{{ page.project_number }}</span>
+        </li>
+      {% endif %}
+    </ul>
+
+    {% if page.keywords %}
+      {% assign keywords = page.keywords | sort_natural %}
+      <div class="cv-keywords">
+        {% for kw in keywords %}
+          <span>{{ kw | strip }}</span>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    {% if page.image %}
+      <figure class="project-page-figure">
+        {% assign image_path = 'assets/img/projects/' | append: page.image | relative_url %}
+        {% include figure.liquid loading="eager" path=image_path title="Scheme" class="img-fluid" %}
+        {% if page.image_caption %}
+          <figcaption>{{ page.image_caption }}</figcaption>
+        {% endif %}
+      </figure>
+    {% endif %}
+
+    {% if page.abstract %}
+      <h2 class="page-section-title">Abstract</h2>
+      {% comment %} folded YAML (>) keeps only a single newline between paragraphs – split on it {% endcomment %}
+      {% assign abstract_paragraphs = page.abstract | strip | newline_to_br | split: '<br />' %}
+      <div class="project-page-abstract">
+        {% for paragraph in abstract_paragraphs %}
+          {% assign paragraph_text = paragraph | strip %}
+          {% if paragraph_text != '' %}
+            <p>{{ paragraph_text }}</p>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    {% if content != '' %}
+      <div class="project-page-content">{{ content }}</div>
+    {% endif %}
+  </article>
+
+  {% assign project_paper_count = '0' %}
+  {% if page.related_publications and page.publications %}
+    {% capture project_paper_count %}{% bibliography_count -f papers -q @*[{{ page.publications }}]* %}{% endcapture %}
+    {% assign project_paper_count = project_paper_count | strip %}
+  {% endif %}
+  {% if project_paper_count != '0' %}
+    <h2 id="publications" class="page-section-title">Publications</h2>
+    {% include paper_filters.liquid query=page.publications %}
+    <div class="publications">
+      {% bibliography -f papers -q @*[{{ page.publications }}]* %}
+    </div>
+  {% endif %}
+</div>
