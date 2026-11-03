@@ -1,5 +1,5 @@
 # Członkowie koła (strona /czlonkowie/).
-# board – zarząd (bieżąca kadencja), supervisors – opiekunowie, members – lista członków
+# board – zarząd (bieżąca kadencja), section_leads – osoby odpowiedzialne za sekcje, supervisors – opiekunowie, members – lista członków
 
 board_term: 2025/2026
 board:
@@ -12,6 +12,12 @@ board:
   - name: Paweł Jerzyna
     role: Członek Zarządu
     email: jerzyna@student.agh.edu.pl
+
+section_leads:
+  - name: Piotr Wzorek
+    role: Sekcja FPGA
+  - name: Marcin Kowalczyk
+    role: Sekcja neuromorficzna
 
 supervisors:
   - name: dr hab. inż. Tomasz Kryjak

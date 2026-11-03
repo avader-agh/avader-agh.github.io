@@ -23,6 +23,13 @@ nav_order: 3
   {% endfor %}
 </ul>
 
+<h2 class="page-section-title">Odpowiedzialni za sekcje</h2>
+<ul class="avader-people">
+  {% for l in people.section_leads %}
+  <li><strong>{{ l.name }}</strong><span>{{ l.role }}</span></li>
+  {% endfor %}
+</ul>
+
 <h2 class="page-section-title has-count">Członkowie <span class="section-count">{{ people.members.size }}</span></h2>
 <ul class="avader-member-list">
   {% for m in people.members %}<li>{{ m }}</li>{% endfor %}
