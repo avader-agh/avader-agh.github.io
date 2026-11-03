@@ -30,6 +30,13 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/czlonkowie/";
           },
+        },{id: "nav-logo",
+          title: "Logo",
+          description: "Logotypy Koła Naukowego AGH AVADER do pobrania – do plakatów, prezentacji, publikacji i social mediów.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/logo/";
+          },
         },{id: "nav-en",
           title: "EN",
           description: "",
