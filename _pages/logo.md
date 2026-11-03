@@ -7,7 +7,7 @@ nav: true
 nav_order: 4
 ---
 
-Pliki PNG mają przezroczyste tło. Do druku najlepiej użyć wersji PDF – są wektorowe i skalują się bez utraty jakości.
+Do druku najlepiej użyć wersji PDF – są wektorowe i skalują się bez utraty jakości. Kliknij podgląd, aby otworzyć plik w pełnym rozmiarze.
 
 <div class="avader-logos">
   {% for logo in site.data.logos %}
