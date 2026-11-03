@@ -1,10 +1,12 @@
 # Osiągnięcia koła (strona /osiagniecia/). Najnowsze na górze.
 # Pola: year, place (miejsce/wyróżnienie), competition (zawody/konferencja), authors, topic (opcjonalnie),
+#       logo (opcjonalnie, plik w assets/img/achievements/),
 #       highlight: true – pokaż na stronie głównej (polskiej i angielskiej), title_en – tytuł do wersji angielskiej
 
 - year: 2026
   place: II miejsce
   competition: The ICUAS UAV Competition
+  logo: icuas_logo.jpg
   authors: Krzysztof Jagiełło, Kamil Jędrzejko, Remigiusz Mietła, Mateusz Gołąbek
   topic: Autonomiczna współpraca roju dronów oraz jednostki naziemnej w celu wykrywania i identyfikacji zagrożeń CBRNE (chemicznych, biologicznych, radiologicznych, nuklearnych i wybuchowych) w środowisku miejskim
   highlight: true
@@ -13,6 +15,7 @@
 - year: 2026
   place: I miejsce
   competition: 63. Hutnicza Konferencja Studenckich Kół Naukowych AGH
+  logo: skn_agh.png
   authors: Krzysztof Jagiełło, Kamil Jędrzejko, Remigiusz Mietła, Mateusz Gołąbek
   topic: Autonomiczne wykrywanie zagrożeń w obszarze miejskim z wykorzystaniem roju BSP
   highlight: true
@@ -21,36 +24,42 @@
 - year: 2026
   place: II miejsce
   competition: 63. Hutnicza Konferencja Studenckich Kół Naukowych AGH
+  logo: skn_agh.png
   authors: Krzysztof Jagiełło, Kamil Jędrzejko, Hubert Gąska, Rafał Mielczarek
   topic: Autonomiczny pobór oraz badanie in-situ próbki wody z poziomu bezzałogowego statku powietrznego
 
 - year: 2026
   place: III miejsce
   competition: 63. Hutnicza Konferencja Studenckich Kół Naukowych AGH
+  logo: skn_agh.png
   authors: Michał Filipkowski, Marcin Dworak
   topic: Implementacja w układzie FPGA algorytmu maksymalizacji kontrastu dla obrazu z kamery zdarzeniowej
 
 - year: 2025
   place: I miejsce
   competition: 62. Hutnicza Konferencja Studenckich Kół Naukowych AGH
+  logo: skn_agh.png
   authors: Kamil Jędrzejko, Kacper Iwicki, Tymoteusz Domagała, Mateusz Gołąbek
   topic: Wykrywanie zagrożeń w znanym obszarze miejskim z wykorzystaniem roju bezzałogowych statków powietrznych
 
 - year: 2024
   place: I miejsce
   competition: 61. Hutnicza Konferencja Studenckich Kół Naukowych AGH
+  logo: skn_agh.png
   authors: Kacper Iwicki, Remigiusz Mietła
   topic: Wykorzystanie BSP do inspekcji upraw
 
 - year: 2024
   place: II miejsce
   competition: 61. Hutnicza Konferencja Studenckich Kół Naukowych AGH
+  logo: skn_agh.png
   authors: Michał Szmuksta
   topic: Bezkolizyjny lot roju dronów z wykorzystaniem algorytmu stadnego – symulacja w środowisku NVIDIA Isaac Sim
 
 - year: 2024
   place: III miejsce
   competition: MathWorks MiniDrone Competition 2024
+  logo: mathworks.png
   authors: Remigiusz Mietła, Kacper Iwicki
   highlight: true
   title_en: 3rd place – MathWorks MiniDrone Competition 2024
@@ -58,6 +67,7 @@
 - year: 2024
   place: IV miejsce
   competition: ICUAS 2024 Unmanned Aerial Vehicle Competition
+  logo: icuas.png
   authors: Remigiusz Mietła, Kacper Iwicki
   highlight: true
   title_en: 4th place – IEEE ICUAS 2024 UAV Competition
@@ -65,11 +75,13 @@
 - year: 2023
   place: II miejsce
   competition: I edycja Hackathonu Simuthon 2023
+  logo: simuthon.png
   authors: Jacek Ankowski, Igor Kordzi, Mateusz Kowalski, Zuzanna Zielińska
 
 - year: 2023
   place: II miejsce
   competition: FPGA Hackathon w ramach FPGA Hackathon & Conference 2023
+  logo: fpga.jpg
   authors: Mariusz Grabowski, Kamil Jeziorek, Michał Niedbała
 
 # TODO: sprawdzić – na starej stronie oba wpisy 2022 miały tytuł „III i IV miejsce – DodgeDrone Challenge 2022”,
@@ -77,44 +89,52 @@
 - year: 2022
   place: III i IV miejsce
   competition: Międzynarodowy konkurs DodgeDrone Challenge 2022
+  logo: skn_agh.png
   authors: Paweł Miera
 
 - year: 2022
   place: Udział
   competition: Międzynarodowy konkurs Adaptive Computing Challenge 2022
+  logo: xilinx.jpeg
   authors: Robert Synoczek
 
 - year: 2021
   place: Udział
   competition: Międzynarodowy konkurs Xilinx Open Hardware 2021
+  logo: xilinx.jpeg
   authors: Michał Machura, Michał Daniłowicz
 
 - year: 2021
   place: Udział
   competition: Międzynarodowy konkurs Xilinx Open Hardware 2021
+  logo: xilinx.jpeg
   authors: Mariusz Grabowski
   topic: Obstacle avoidance using 4K stereo vision
 
 - year: 2021
   place: I miejsce
   competition: 58. Konferencja Kół Naukowych Pionu Hutniczego AGH
+  logo: skn_agh.png
   authors: Piotr Wzorek
   topic: Automatyczna rejestracja przebiegu gry w brydża sportowego
 
 - year: 2020
   place: Udział
   competition: Międzynarodowy konkurs Xilinx Open Hardware 2020
+  logo: xilinx.jpeg
   authors: Joanna Stanisz, Konrad Lis
   topic: Object detection from point clouds using deep neural network
 
 - year: 2019
   place: Wyróżnienie w finale
   competition: 15. edycja międzynarodowego konkursu Digilent Design Contest
+  logo: Logo_Digilent_Design_Contest_2019_FB.jpg
   authors: Joanna Stanisz, Konrad Lis
   topic: Car Detection System Based on LiDAR and camera data fusion
 
 - year: 2018
   place: II miejsce
   competition: 14. edycja międzynarodowego konkursu Digilent Design Contest
+  logo: Logo_Digilent_Design_Contest_2019_FB.jpg
   authors: Karol Radwan
   topic: Structure From Motion scene recognition system for navigation of unmanned aerial vehicles

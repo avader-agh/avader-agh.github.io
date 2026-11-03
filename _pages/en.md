@@ -20,12 +20,15 @@ hero_buttons:
 
 sections:
   - icon: fa-solid fa-helicopter
+    image: icon_drone2.jpg
     title: Drones
     text: Autonomous UAVs and drone swarms – PX4, ROS 2, simulation in Gazebo and NVIDIA Isaac Sim, tests in a motion-capture cage.
   - icon: fa-solid fa-microchip
+    image: icon_cpu2.jpg
     title: FPGA
     text: Hardware acceleration of image processing and deep neural networks on FPGA and SoC FPGA (Zynq, Kria, Versal).
   - icon: fa-solid fa-eye
+    image: neuroAI2.png
     title: Neuromorphic
     text: Event cameras and neuromorphic computing – a new approach to image processing.
   - icon: fa-solid fa-camera

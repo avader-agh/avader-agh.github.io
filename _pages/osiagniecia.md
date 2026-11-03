@@ -15,7 +15,11 @@ nav_order: 1
   <ol class="cv-timeline">
     {% for a in group.items %}
     <li class="cv-item">
+      {% if a.logo %}
+      <span class="cv-item-icon avader-ach-logo"><img src="{{ a.logo | prepend: '/assets/img/achievements/' | relative_url }}" alt="" loading="lazy"></span>
+      {% else %}
       <span class="cv-item-icon"><i class="fa-solid fa-trophy"></i></span>
+      {% endif %}
       <div class="cv-item-body">
         <div class="cv-item-head"><h3>{{ a.place }} – {{ a.competition }}</h3></div>
         <div class="cv-item-org">{{ a.authors }}</div>

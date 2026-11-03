@@ -1,0 +1,28 @@
+# Logotypy AGH AVADER do pobrania (strona /logo/). Pliki w assets/img/.
+# Pola: file (nazwa bez rozszerzenia), name, desc, pdf: true – jeśli istnieje też wersja PDF (wektorowa)
+- file: agh_avader_logo_sq_small
+  name: Logo podstawowe
+  desc: Wersja kwadratowa z napisem
+  pdf: true
+- file: agh_avader_logo_sq_big
+  name: Logo duże
+  desc: Wersja szeroka z napisem
+  pdf: true
+- file: agh_avader_logo_poziome
+  name: Logo poziome
+  desc: Do nagłówków, stopek i banerów
+  pdf: true
+- file: agh_avader_logo_sq_no_text
+  name: Sygnet
+  desc: Sam znak, bez napisu
+  pdf: true
+- file: agh_avader_logo_sq_min
+  name: Logo małe
+  desc: Do małych rozmiarów (ikony, awatary)
+  pdf: true
+- file: agh_avader_logo_sq_1_1
+  name: Logo 1:1
+  desc: Kwadrat 1736 × 1736 px
+- file: agh_avader_logo_sq_small_fb
+  name: Awatar do social media
+  desc: Kwadrat 1181 × 1181 px (Facebook, LinkedIn)

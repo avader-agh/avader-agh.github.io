@@ -19,12 +19,15 @@ hero_buttons:
 
 sections:
   - icon: fa-solid fa-helicopter
+    image: icon_drone2.jpg
     title: Drony
     text: Autonomiczne BSP i roje dronów – PX4, ROS 2, symulacja w Gazebo i NVIDIA Isaac Sim, testy w klatce z systemem motion capture.
   - icon: fa-solid fa-microchip
+    image: icon_cpu2.jpg
     title: FPGA
     text: Sprzętowa akceleracja przetwarzania obrazu i głębokich sieci neuronowych na układach FPGA i SoC FPGA (Zynq, Kria, Versal).
   - icon: fa-solid fa-eye
+    image: neuroAI2.png
     title: Neuromorficzna
     text: Kamery zdarzeniowe i obliczenia neuromorficzne – nowe podejście do przetwarzania obrazów.
   - icon: fa-solid fa-camera

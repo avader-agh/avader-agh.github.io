@@ -55,7 +55,11 @@ layout: default
     <div class="home-areas">
       {% for area in page.sections %}
         <div class="home-area">
-          <span class="home-area-icon"><i class="{{ area.icon }}"></i></span>
+          {% if area.image %}
+            <img class="avader-area-img" src="{{ area.image | prepend: '/assets/img/sections/' | relative_url }}" alt="{{ area.title }}" loading="lazy">
+          {% else %}
+            <span class="home-area-icon"><i class="{{ area.icon }}"></i></span>
+          {% endif %}
           <h3>{{ area.title }}</h3>
           <p>{{ area.text }}</p>
         </div>
@@ -66,6 +70,7 @@ layout: default
   <section class="home-section home-about" id="about">
     <h2 class="home-section-title">{{ t.about_title }}</h2>
     <div class="home-about-text">{{ content }}</div>
+    <img class="avader-about-photo" src="{{ '/assets/img/marvin.jpg' | relative_url }}" alt="AGH AVADER" loading="lazy">
   </section>
 
   <section class="home-section" id="achievements">
