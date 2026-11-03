@@ -2883,10 +2883,10 @@ ol {
   .home-area-lead {
     margin: 0;
     font-size: 0.85rem;
-    color: var(--global-text-color);
+    color: var(--global-text-color-light);
 
-    span {
-      color: var(--global-text-color-light);
+    strong {
+      color: var(--global-text-color);
     }
   }
 }
