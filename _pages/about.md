@@ -26,10 +26,12 @@ sections:
     image: icon_cpu2.jpg
     title: FPGA
     text: Sprzętowa akceleracja przetwarzania obrazu i głębokich sieci neuronowych na układach FPGA i SoC FPGA (Zynq, Kria, Versal).
+    lead: Piotr Wzorek
   - icon: fa-solid fa-eye
     image: neuroAI2.png
     title: Neuromorficzna
     text: Kamery zdarzeniowe i obliczenia neuromorficzne – nowe podejście do przetwarzania obrazów.
+    lead: Marcin Kowalczyk
   - icon: fa-solid fa-camera
     title: Media
     text: Zdjęcia i filmy z projektów i zawodów, promocja koła i udział w wydarzeniach popularyzujących naukę.
@@ -40,6 +42,7 @@ labels:
   achievements: osiągnięć
   grants: grantów rektorskich
   sections_title: Sekcje
+  section_lead: Odpowiedzialny
   about_title: O nas
   achievements_title: Wybrane osiągnięcia
   all_achievements: Wszystkie osiągnięcia

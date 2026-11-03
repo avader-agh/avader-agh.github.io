@@ -27,10 +27,12 @@ sections:
     image: icon_cpu2.jpg
     title: FPGA
     text: Hardware acceleration of image processing and deep neural networks on FPGA and SoC FPGA (Zynq, Kria, Versal).
+    lead: Piotr Wzorek
   - icon: fa-solid fa-eye
     image: neuroAI2.png
     title: Neuromorphic
     text: Event cameras and neuromorphic computing – a new approach to image processing.
+    lead: Marcin Kowalczyk
   - icon: fa-solid fa-camera
     title: Media
     text: Photos and videos of our projects and competitions, promotion of the club and science outreach.
@@ -41,6 +43,7 @@ labels:
   achievements: achievements
   grants: AGH Rector's grants
   sections_title: Sections
+  section_lead: Section lead
   about_title: About us
   achievements_title: Selected achievements
   all_achievements: All achievements (in Polish)

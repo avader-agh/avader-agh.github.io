@@ -67,6 +67,9 @@ layout: default
           {% endif %}
           <h3>{{ area.title }}</h3>
           <p>{{ area.text }}</p>
+          {% if area.lead %}
+            <p class="home-area-lead"><span>{{ t.section_lead }}:</span> <strong>{{ area.lead }}</strong></p>
+          {% endif %}
         </div>
       {% endfor %}
     </div>
