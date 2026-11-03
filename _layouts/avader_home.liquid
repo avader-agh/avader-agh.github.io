@@ -56,7 +56,12 @@ layout: default
       {% for area in page.sections %}
         <div class="home-area">
           {% if area.image %}
-            <img class="avader-area-img" src="{{ area.image | prepend: '/assets/img/sections/' | relative_url }}" alt="{{ area.title }}" loading="lazy">
+            <img
+              class="avader-area-img"
+              src="{{ area.image | prepend: '/assets/img/sections/' | relative_url }}"
+              alt="{{ area.title }}"
+              loading="lazy"
+            >
           {% else %}
             <span class="home-area-icon"><i class="{{ area.icon }}"></i></span>
           {% endif %}
