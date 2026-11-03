@@ -51,13 +51,13 @@ labels:
   contact_title: Contact
   supervisors: Supervisors
   contact: The club
-  place: Vision Systems Laboratory, 1st floor, building C3, AGH University of Krakow
+  place: Embedded Perception and Autonomous Systems Group, 1st floor, building C3, AGH University of Krakow
   join_title: Want to join AVADER?
   join_text: Write to us or come to a club meeting – we will help you pick a project and a section.
   join_button: Write to us
 ---
 
-The AGH AVADER Student Research Club was founded in 2014/2015 and is supervised by the [Embedded Perception and Autonomous Systems Group](https://vision-agh.github.io) (Vision Systems Laboratory, Department of Automatic Control and Robotics, AGH University of Krakow, Poland).
+The AGH AVADER Student Research Club was founded in 2014/2015 and is supervised by the [Embedded Perception and Autonomous Systems Group](https://vision-agh.github.io) (Department of Automatic Control and Robotics, AGH University of Krakow, Poland).
 
 We work on embedded perception and control systems for mobile robots: autonomous drones (UAVs), self-driving cars, advanced driver-assistance systems (ADAS) and advanced video surveillance. We use data from video, thermal and event cameras, radar and LiDAR, processed with classical algorithms and embedded AI (TinyML), in ROS 2 and simulators (Gazebo, NVIDIA Isaac Sim), including hardware-in-the-loop tests.
 

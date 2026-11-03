@@ -50,13 +50,13 @@ labels:
   contact_title: Kontakt
   supervisors: Opiekunowie
   contact: Koło
-  place: Laboratorium Systemów Wizyjnych, 1. piętro, budynek C3, AGH
+  place: Zespół Percepcji Wbudowanej i Systemów Autonomicznych, 1. piętro, budynek C3, AGH
   join_title: Chcesz dołączyć do AVADER?
   join_text: Napisz do nas lub przyjdź na spotkanie koła – pomożemy wybrać projekt i sekcję.
   join_button: Napisz do nas
 ---
 
-Studenckie Koło Naukowe AGH AVADER powstało na przełomie 2014/2015 roku i działa przy [Embedded Perception and Autonomous Systems Group](https://vision-agh.github.io) (Laboratorium Systemów Wizyjnych, Katedra Automatyki i Robotyki, Wydział EAIiIB AGH).
+Studenckie Koło Naukowe AGH AVADER powstało na przełomie 2014/2015 roku i działa przy [Zespole Percepcji Wbudowanej i Systemów Autonomicznych](https://vision-agh.github.io) (Katedra Automatyki i Robotyki, Wydział EAIiIB AGH).
 
 Interesują nas wbudowane systemy percepcji i sterowania robotów mobilnych: autonomiczne drony (BSP), samochody autonomiczne, systemy wspomagania kierowcy (ADAS) oraz zaawansowany monitoring wizyjny. Wykorzystujemy dane z kamer wizyjnych, termowizyjnych i zdarzeniowych, radaru i LiDARu, przetwarzane algorytmami klasycznymi i wbudowaną sztuczną inteligencją (embedded AI, TinyML). Pracujemy w ROS 2 oraz w środowiskach symulacyjnych (Gazebo, NVIDIA Isaac Sim), także w testach Hardware-in-the-Loop.
 
