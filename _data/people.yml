@@ -1,5 +1,5 @@
 # Członkowie koła (strona /czlonkowie/).
-# board – zarząd (bieżąca kadencja), section_leads – osoby odpowiedzialne za sekcje, supervisors – opiekunowie, members – lista członków
+# board – zarząd (bieżąca kadencja), section_leads – opiekunowie sekcji, supervisors – opiekunowie, members – lista członków
 
 board_term: 2025/2026
 board:
@@ -14,10 +14,14 @@ board:
     email: jerzyna@student.agh.edu.pl
 
 section_leads:
-  - name: Piotr Wzorek
+  - name: mgr inż. Hubert Szolc
+    role: Sekcja dronowa
+  - name: mgr inż. Mateusz Wąsala
+    role: Sekcja dronowa
+  - name: mgr inż. Piotr Wzorek
     role: Sekcja FPGA
-  - name: Marcin Kowalczyk
-    role: Sekcja neuromorficzna
+  - name: mgr inż. Marcin Kowalczyk
+    role: Sekcja Neuromorphic
 
 supervisors:
   - name: dr hab. inż. Tomasz Kryjak
